@@ -1,0 +1,5 @@
+var notify = document.getElementById('notify')
+var notifyText = document.getElementById('watched-movies-size')
+
+notifyText.remove();
+notify.insertAdjacentHTML("afterbegin", "<%= j render partial: 'movies/watched_movies', locals: { total: @watched_movies } %>")

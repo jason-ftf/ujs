@@ -1,0 +1,5 @@
+var movie = document.getElementById('movie-details')
+var listItems = document.getElementById('movie-list-items')
+
+listItems.remove();
+movie.insertAdjacentHTML("afterbegin", "<%= j render partial: 'movies/movie', locals: { movie: @movie } %>")

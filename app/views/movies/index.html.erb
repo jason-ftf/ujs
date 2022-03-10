@@ -1,0 +1,33 @@
+<div class="card" id="notify">
+  <%= render partial: 'watched_movies', locals: { total: @watched_movies } %>
+</div>
+<div class="grid">
+  <section>
+    <ul>
+    <% @movies.each do |movie| %>
+      <li>
+        <input type="checkbox"
+               data-controller="movie"
+               data-action="movie#updateStatus"
+               data-movie-target="status"
+               data-movie-id-param="<%= movie.id %>"
+               <% if movie.watched? %>checked<% end %>>
+        <%= link_to movie.name, movies_path(movie: movie.id), remote: true %>    
+      </li>
+    <% end %>
+    </ul>
+  </section>
+  <section>
+    <ul id="movie-details">
+      <%= render partial: 'movie', locals: { movie: @movies.first } %>
+    </ul>
+  </section>
+</div>
+
+
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid > section { background-color: #eeeeee, padding:  2em}
+  .card { border: 1px solid #eeeeee; padding: 1.5em; width: 100%; text-align: center; }
+</style>
